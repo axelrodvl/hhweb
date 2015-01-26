@@ -22,8 +22,8 @@ public abstract class Page {
         driver.quit();
     }
 
-    public abstract void getHeader();
-    public abstract void getMainForm();
-    public abstract void getFooter();
+    public abstract Form getHeader();
+    public abstract Form getMainForm();
+    public abstract Form getFooter();
 }
 

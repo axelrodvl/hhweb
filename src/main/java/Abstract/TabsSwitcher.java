@@ -10,7 +10,7 @@ public abstract class TabsSwitcher {
 
     private void createTab(WebElement tabForm) {
         // MAGIC
-        Form form = new Form();
-        tabs.add(form);
+        //Form form = new Form();
+        //tabs.add(form);
     }
 }

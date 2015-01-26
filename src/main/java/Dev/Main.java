@@ -1,7 +1,8 @@
 package Dev;
 
 import Abstract.Page;
-import Entity.Price;
+import Forms.PriceMainForm;
+import Pages.PricePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -37,23 +38,46 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 
 public class Main {
+    private static final String CHROME_DRIVER_NAME = "chromedriver.exe";
+    private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
+    protected static WebDriver driver = null;
+
     public static void main(String[] args) {
-        Price pricePage = new Price();
+        /*
+        Page pricePage = new PricePage();
         pricePage.open();
+
+        PriceMainForm priceMainForm = pricePage.getMainForm();
+
         pricePage.close();
+        */
 
-        // FormBucket formBucket = pricePage.getMainForm.getBucket();
+        /*
+        Bucket bucket = new Bucket();
 
-        // FormRecommended formRecommended = pricePage.getMainForm.getTabsSwitcher.getTab(0);
-        // FormSpecialist formSpecialist = pricePage.getMainForm.getTabsSwitcher.getTab(1);
-        // FormVacancyPublication formVacancyPublication = pricePage.getMainForm.getTabsSwitcher.getTab(2);
-        // FormAdditionalService formAdditionalService = pricePage.getMainForm.getTabsSwitcher.getTab(3);
+        FormBucket formBucket = pricePagePage.getMainForm.getBucket();
+        FormRecommended formRecommended = pricePagePage.getMainForm.getTabsSwitcher.getTab(0);
+        FormSpecialist formSpecialist = pricePagePage.getMainForm.getTabsSwitcher.getTab(1);
+        FormVacancyPublication formVacancyPublication = pricePagePage.getMainForm.getTabsSwitcher.getTab(2);
+        FormAdditionalService formAdditionalService = pricePagePage.getMainForm.getTabsSwitcher.getTab(3);
 
-        // tabSpecialist.getRegionElement.chooseRegion("Москва и область");
-        // tabSpecialist.getProfessionElement.chooseProfession("Информационные технологии, интернет, телеком");
-        // tabSpecialist.getForm("Экспресс-подбор").getOption(0);
+        tabSpecialist.getRegionElement.chooseRegion("Москва и область");
+        tabSpecialist.getProfessionElement.chooseProfession("Информационные технологии, интернет, телеком");
+        bucket.add(tabSpecialist.getForm("Экспресс-подбор").chooseOption(0));
 
+        assertEquals(bucket.getAmount(), formBucket.getAmount());
+        */
 
+        System.setProperty(CHROME_DRIVER_PROPERTY, CHROME_DRIVER_NAME);
+        driver = new ChromeDriver();
+
+        PricePage pricePage = new PricePage(driver);
+        pricePage.getTabRecommended().chooseOffer(0);
+        pricePage.getTabRecommended().chooseOffer(1);
+        pricePage.getTabRecommended().getOffer(0).printOffer();
+        pricePage.getTabRecommended().getOffer(1).printOffer();
+
+        pricePage.close();
     }
 
 
