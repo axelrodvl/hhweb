@@ -74,6 +74,7 @@ public class PricePage {
     }
     */
 
+
     public void close() {
         driver.quit();
     }

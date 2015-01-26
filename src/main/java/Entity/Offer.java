@@ -15,6 +15,8 @@ public class Offer {
     public String actualPrice = null;
     public String specialOfferPlus = null;
 
+    public Integer price = null;
+
     By giftTitleLocator = By.className("price-spoffers__gift-title");
     By giftDescLocator = By.className("price-spoffers__gift-desc");
     By actionTitleLocator = By.className("price-spoffers__action-title");
@@ -48,6 +50,8 @@ public class Offer {
 
         actualPrice = offer.findElement(actualPriceLocator).getText();
         specialOfferPlus = offer.findElement(specialOfferPlusLocator).getText();
+
+        price = Integer.valueOf(actualPrice.replaceAll("\\D+",""));
     }
 
     public void printOffer() {
@@ -60,6 +64,9 @@ public class Offer {
         System.out.println("oldPrice: " + oldPrice);
         System.out.println("actualPrice: " + actualPrice);
         System.out.println("specialOfferPlus: " + specialOfferPlus);
+        System.out.println();
+        System.out.println("PRICE: " + price);
         System.out.println("__________________________________________________");
+        System.out.println();
     }
 }
