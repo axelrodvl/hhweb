@@ -1,4 +1,5 @@
 package Abstract;
 
-public class Form {
+public abstract class Form {
+    protected abstract void getTabsSwitcher();
 }

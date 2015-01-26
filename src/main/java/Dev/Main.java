@@ -38,11 +38,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Main {
     public static void main(String[] args) {
-        Price page = new Price();
-        page.open();
-        page.close();
+        Price pricePage = new Price();
+        pricePage.open();
+        pricePage.close();
 
-        // page.get(mainForm).tabsSwitcher.get(1).get
+        // FormBucket formBucket = pricePage.getMainForm.getBucket();
+
+        // FormRecommended formRecommended = pricePage.getMainForm.getTabsSwitcher.getTab(0);
+        // FormSpecialist formSpecialist = pricePage.getMainForm.getTabsSwitcher.getTab(1);
+        // FormVacancyPublication formVacancyPublication = pricePage.getMainForm.getTabsSwitcher.getTab(2);
+        // FormAdditionalService formAdditionalService = pricePage.getMainForm.getTabsSwitcher.getTab(3);
+
+        // tabSpecialist.getRegionElement.chooseRegion("Москва и область");
+        // tabSpecialist.getProfessionElement.chooseProfession("Информационные технологии, интернет, телеком");
+        // tabSpecialist.getForm("Экспресс-подбор").getOption(0);
+
+
     }
 
 

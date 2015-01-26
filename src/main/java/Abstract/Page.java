@@ -21,5 +21,9 @@ public abstract class Page {
     public void close() {
         driver.quit();
     }
+
+    public abstract void getHeader();
+    public abstract void getMainForm();
+    public abstract void getFooter();
 }
 
