@@ -22,7 +22,7 @@ public class TabRecommended {
         offersCount = offersList.size();
     }
 
-    public void chooseOffer(int offerNumber) {
+    public void selectOffer(int offerNumber) {
         offersList.get(offerNumber).findElement(addToBucketLocator).click();
     }
 
