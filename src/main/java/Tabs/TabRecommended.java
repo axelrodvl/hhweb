@@ -14,7 +14,7 @@ public class TabRecommended {
     public int offersCount;
 
     By offersLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[1]/div/div/div[script[@data-name=\"HH/Cart/SpecialOffer\"]]");
-    By addToBucketLocator = By.xpath("form/div/button");
+    By addToCartButtonLocator = By.xpath("form/div/button");
 
     public TabRecommended(WebDriver driver) {
         this.driver = driver;
@@ -22,8 +22,8 @@ public class TabRecommended {
         offersCount = offersList.size();
     }
 
-    public void selectOffer(int offerNumber) {
-        offersList.get(offerNumber).findElement(addToBucketLocator).click();
+    public void addToCart(int offerNumber) {
+        offersList.get(offerNumber).findElement(addToCartButtonLocator).click();
     }
 
     public Offer getOffer(int offerNumber) {

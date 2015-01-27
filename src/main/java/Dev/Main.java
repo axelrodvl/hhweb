@@ -36,7 +36,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 
 public class Main {
-    private static final String CHROME_DRIVER_NAME = "chromedriver";
+    private static final String CHROME_DRIVER_NAME = "chromedriver.exe";
     private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
     protected static WebDriver driver = null;
 
@@ -70,8 +70,8 @@ public class Main {
         driver = new ChromeDriver();
 
         PricePage pricePage = new PricePage(driver);
-        pricePage.recommendedTab().selectOffer(0);
-        pricePage.recommendedTab().selectOffer(1);
+        pricePage.recommendedTab().addToCart(0);
+        pricePage.recommendedTab().addToCart(1);
         pricePage.recommendedTab().getOffer(0).printOffer();
         pricePage.recommendedTab().getOffer(1).printOffer();
 
@@ -79,7 +79,7 @@ public class Main {
         pricePage.resumeBaseAccessTab().regionSelector().selectSaintPetersburg();
         pricePage.resumeBaseAccessTab().regionSelector().selectRestOfRussia();
 
-        //pricePage.close();
+        pricePage.close();
 
     }
 }
