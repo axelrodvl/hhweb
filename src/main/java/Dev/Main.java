@@ -70,16 +70,23 @@ public class Main {
         driver = new ChromeDriver();
 
         PricePage pricePage = new PricePage(driver);
-        pricePage.recommendedTab().addToCart(0);
-        pricePage.recommendedTab().addToCart(1);
+
+        //pricePage.recommendedTab().addToCart(0);
+        //pricePage.recommendedTab().addToCart(1);
+
+        pricePage.recommendedTab().addToCart(0).addToCart(1);
+
         pricePage.recommendedTab().getOffer(0).printOffer();
         pricePage.recommendedTab().getOffer(1).printOffer();
 
-        pricePage.resumeBaseAccessTab().regionSelector().selectMoscow();
-        pricePage.resumeBaseAccessTab().regionSelector().selectSaintPetersburg();
-        pricePage.resumeBaseAccessTab().regionSelector().selectRestOfRussia();
+        //pricePage.resumeBaseAccessTab().regionSelector().selectMoscow().selectSaintPetersburg().selectRestOfRussia().close();
 
-        pricePage.close();
+        pricePage.resumeBaseAccessTab().regionSelector().selectSaintPetersburg();
+        //pricePage.resumeBaseAccessTab().regionSelector().selectRestOfRussia();
+        pricePage.resumeBaseAccessTab().regionSelector().close();
+
+
+        //pricePage.close();
 
     }
 }

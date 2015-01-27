@@ -21,8 +21,9 @@ public class TabRecommended {
         offersCount = offersList.size();
     }
 
-    public void addToCart(int offerNumber) {
+    public TabRecommended addToCart(int offerNumber) {
         offersList.get(offerNumber).findElement(addToCartButtonLocator).click();
+        return this;
     }
 
     public Offer getOffer(int offerNumber) {

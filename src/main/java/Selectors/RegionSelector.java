@@ -50,31 +50,31 @@ public class RegionSelector {
         regionCount = regionsList.size();
     }
 
-    public void selectRussia() {
+    public RegionSelector selectRussia() {
         if (!driver.findElement(russiaCheckboxLocator).isSelected())
             driver.findElement(russiaCheckboxLocator).click();
-        close();
+        return this;
     }
 
-    public void selectMoscow() {
+    public RegionSelector selectMoscow() {
         if (!driver.findElement(moscowCheckboxLocator).isSelected())
             driver.findElement(moscowCheckboxLocator).click();
-        close();
+        return this;
     }
 
-    public void selectSaintPetersburg() {
+    public RegionSelector selectSaintPetersburg() {
         if (!driver.findElement(saintPetersburgCheckboxLocator).isSelected())
         driver.findElement(saintPetersburgCheckboxLocator).click();
-        close();
+        return this;
     }
 
-    public void selectRestOfRussia() {
+    public RegionSelector selectRestOfRussia() {
         if (!driver.findElement(restOfRussiaCheckboxLocator).isSelected())
             driver.findElement(restOfRussiaCheckboxLocator).click();
-        close();
+        return this;
     }
 
-    private void close() {
+    public void close() {
         driver.findElement(buttonCloseLocator).click();
     }
 }

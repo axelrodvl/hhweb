@@ -44,7 +44,8 @@ public class TabResumeBaseAccess {
         return new ProfAreaSelector(driver);
     }
 
-    public void addToCart() {
+    public TabResumeBaseAccess addToCart() {
         addToCartButton.click();
+        return this;
     }
 }
