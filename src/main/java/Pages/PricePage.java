@@ -1,42 +1,7 @@
 package Pages;
 
-/*
-import Abstract.Page;
-import Forms.PriceMainForm;
-import Forms.FormPage;
-*/
-
-/*
-public class PricePage extends Page {
-    protected static final String PAGE_URI = "/price";
-
-    @Override
-    public void open() {
-        driver.get(ROOT_URI + PAGE_URI);
-
-    }
-
-    @Override
-    public FormPage getHeader() {
-        return null;
-    }
-
-    @Override
-    public PriceMainForm getMainForm() {
-        return null;
-    }
-
-    @Override
-    public FormPage getFooter() {
-        return null;
-    }
-}
-
-*/
-
 import Tabs.TabRecommended;
 import Tabs.TabResumeBaseAccess;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

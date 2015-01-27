@@ -25,18 +25,6 @@ public class Offer {
     By actualPriceLocator = By.className("price-spoffers__actual-price");
     By specialOfferPlusLocator = By.className("price-spoffers__special-offer-plus");
 
-    /*
-    <div class="price-spoffers__gift-title">День доступа к базе резюме бесплатно</div>
-    <div class="price-spoffers__gift-desc">при покупке вакансии</div>
-    <div class="price-spoffers__action-title">быстрый старт:</div>
-    <div class="price-spoffers__special-offer-title">Вакансия Стандарт+</div>
-    <span class="price-spoffers__old-price">3000</span>
-    <span class="price-spoffers__actual-price">2100 руб.</span>
-    <div class="price-spoffers__special-offer-plus">
-                +День доступа к базе резюме бесплатно</div>
-
-     */
-
     public Offer(WebElement offer) {
         this.offer = offer;
 
