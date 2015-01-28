@@ -17,6 +17,15 @@ public class FormCart {
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]")
     private WebElement cartContents;
 
+    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[1]")
+    private WebElement cartContentsResumeAccess;
+
+    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[2]")
+    private WebElement cartContentsCountableService;
+
+    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[3]")
+    private WebElement cartContentsSpecialOffer;
+
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[3]")
     private WebElement cartTotal;
 
@@ -57,6 +66,22 @@ public class FormCart {
             return Integer.valueOf(cartTotalActualCost.getText().replaceAll("\\D+",""));
         else
             return null;
+    }
+
+    public boolean hasContentsGifts() {
+        return cartGifts.isDisplayed();
+    }
+
+    public boolean hasContentsResumeAccess() {
+        return cartContentsResumeAccess.isDisplayed();
+    }
+
+    public boolean hasContentsCountableService() {
+        return cartContentsCountableService.isDisplayed();
+    }
+
+    public boolean hasContentsSpecialOffer() {
+        return cartContentsSpecialOffer.isDisplayed();
     }
 
     public FormCart checkout() {

@@ -41,47 +41,23 @@ public class Main {
     protected static WebDriver driver = null;
 
     public static void main(String[] args) {
-        /*
-        Page pagePrice = new PagePrice();
-        pagePrice.open();
-
-        PriceMainForm priceMainForm = pagePrice.getMainForm();
-
-        pagePrice.close();
-        */
-
-        /*
-        Bucket bucket = new Bucket();
-
-        FormBucket formBucket = pricePagePage.getMainForm.getBucket();
-        FormRecommended formRecommended = pricePagePage.getMainForm.getTabsSwitcher.getTab(0);
-        FormSpecialist formSpecialist = pricePagePage.getMainForm.getTabsSwitcher.getTab(1);
-        FormVacancyPublication formVacancyPublication = pricePagePage.getMainForm.getTabsSwitcher.getTab(2);
-        FormAdditionalService formAdditionalService = pricePagePage.getMainForm.getTabsSwitcher.getTab(3);
-
-        tabSpecialist.getRegionElement.chooseRegion("Москва и область");
-        tabSpecialist.getProfessionElement.chooseProfession("Информационные технологии, интернет, телеком");
-        bucket.add(tabSpecialist.getForm("Экспресс-подбор").chooseOption(0));
-
-        assertEquals(bucket.getAmount(), formBucket.getAmount());
-        */
 
         System.setProperty(CHROME_DRIVER_PROPERTY, CHROME_DRIVER_NAME);
         driver = new ChromeDriver();
 
         PagePrice pagePrice = new PagePrice(driver);
 
-        //pagePrice.recommendedTab().addToCart(0);
-        //pagePrice.recommendedTab().addToCart(1);
-
         if(pagePrice.cartForm().isEmpty())
             System.out.println("CART IS EMPTY!");
 
-        pagePrice.recommendedTab().addToCart(0);
-        pagePrice.recommendedTab().addToCart(1);
+        pagePrice.recommendedTab().addToCart(0).addToCart(1);
 
         System.out.println("Cart old price:" + pagePrice.cartForm().oldCost());
         System.out.println("Cart new price:" + pagePrice.cartForm().actualCost());
+        System.out.println("hasContentsGifts:" + pagePrice.cartForm().hasContentsGifts());
+        System.out.println("hasContentsCountableService:" + pagePrice.cartForm().hasContentsCountableService());
+        System.out.println("hasContentsResumeAccess:" + pagePrice.cartForm().hasContentsResumeAccess());
+        System.out.println("hasContentsSpecialOffer:" + pagePrice.cartForm().hasContentsSpecialOffer());
 
         pagePrice.recommendedTab().getOffer(0).printOffer();
         pagePrice.recommendedTab().getOffer(1).printOffer();
