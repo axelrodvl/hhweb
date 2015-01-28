@@ -13,14 +13,12 @@ import java.util.List;
 public class TabResumeBaseAccess {
     private final WebDriver driver;
     private List<WebElement> offersList;
-    public int offersCount;
 
     public TabResumeBaseAccess(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
         offersList = driver.findElements(offersLocator);
-        offersCount = offersList.size();
     }
 
     By offersLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[5]/div");

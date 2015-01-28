@@ -4,36 +4,7 @@ import Pages.PagePrice;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-/*
-Вид модели:
-Форма - Вкладка/Корзина - Сущность - Опция/количество
-*/
-
-/*
-Сущности:
-1. Вкладки
-    1.1 Рекомендуемое
-    1.2 Доступ к базе резюме
-    1.3 Публикации вакансий
-    1.4 Дополнительные услуги
-2. Корзина
-
-*/
-
-/*
-2. Доступ к базе резюме
-    2.1 Тригеры
-        1.1.1 Регион
-        1.1.2 Профобласть
-        1.1.3 С безлимитными публикациями вакансий "Стандарт" (только для 1.2.2 и 1.2.3)
-    2.2 Опции
-        1.2.1 Экспресс-подбор (2 опции)
-        1.2.2 Поиск специалиста (1 опция) + 1 триггер
-        1.2.3 Регулярный подбор (3 опции) + 1 триггер
-    2.3 Действия
-        1.3.1 В корзину
-        1.3.2 Пересчитать
- */
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     private static final String CHROME_DRIVER_NAME = "chromedriver";
@@ -47,6 +18,12 @@ public class Main {
 
         PagePrice pagePrice = new PagePrice(driver);
 
+        try {
+            TimeUnit.MILLISECONDS.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         if(pagePrice.cartForm().isEmpty())
             System.out.println("CART IS EMPTY!");
 
@@ -59,17 +36,18 @@ public class Main {
         System.out.println("hasContentsResumeAccess:" + pagePrice.cartForm().hasContentsResumeAccess());
         System.out.println("hasContentsSpecialOffer:" + pagePrice.cartForm().hasContentsSpecialOffer());
 
-        pagePrice.recommendedTab().getOffer(0).printOffer();
-        pagePrice.recommendedTab().getOffer(1).printOffer();
+        pagePrice.cartForm().getSpecialOffer(0).print();
+        pagePrice.cartForm().getSpecialOffer(1).print();
+
+        pagePrice.recommendedTab().getOffer(0).print();
+        pagePrice.recommendedTab().getOffer(1).print();
 
         pagePrice.cartForm();
-
-        //pagePrice.resumeBaseAccessTab().regionSelector().selectMoscow().selectSaintPetersburg().selectRestOfRussia().close();
 
         pagePrice.resumeBaseAccessTab().regionSelector().selectSaintPetersburg().close();
         pagePrice.resumeBaseAccessTab().regionSelector().selectRestOfRussia().close();
 
-        //pagePrice.close();
+        pagePrice.close();
 
     }
 }

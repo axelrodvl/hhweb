@@ -1,12 +1,18 @@
 package Forms;
 
+import Entity.Offer;
+import Entity.SpecialOfferCart;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class FormCart {
     private final WebDriver driver;
+    private List<WebElement> specialOffersList;
 
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[2]")
     private WebElement formCartEmpty;
@@ -25,6 +31,8 @@ public class FormCart {
 
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[3]")
     private WebElement cartContentsSpecialOffer;
+
+    By specialOfferLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[3]/li");
 
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[3]")
     private WebElement cartTotal;
@@ -46,7 +54,8 @@ public class FormCart {
         PageFactory.initElements(driver, this);
 
         if(!isEmpty()) {
-
+            if(hasContentsSpecialOffer())
+                specialOffersList = driver.findElements(specialOfferLocator);
         }
     }
 
@@ -82,6 +91,10 @@ public class FormCart {
 
     public boolean hasContentsSpecialOffer() {
         return cartContentsSpecialOffer.isDisplayed();
+    }
+
+    public SpecialOfferCart getSpecialOffer(int offerNumber) {
+        return new SpecialOfferCart(specialOffersList.get(offerNumber));
     }
 
     public FormCart checkout() {

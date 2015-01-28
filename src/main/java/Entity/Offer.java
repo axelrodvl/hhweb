@@ -42,7 +42,7 @@ public class Offer {
         price = Integer.valueOf(actualPrice.replaceAll("\\D+",""));
     }
 
-    public void printOffer() {
+    public void print() {
         System.out.println("OFFER:");
         System.out.println("__________________________________________________");
         System.out.println("giftTitle: " + giftTitle);
