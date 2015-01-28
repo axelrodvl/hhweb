@@ -1,8 +1,8 @@
-package Pages;
+package Pages.PricePage;
 
-import Forms.FormCart;
-import Tabs.TabRecommended;
-import Tabs.TabResumeBaseAccess;
+import Pages.PricePage.Forms.FormCart;
+import Pages.PricePage.Tabs.TabRecommended.TabRecommended;
+import Pages.PricePage.Tabs.TabResumeBaseAccess.TabResumeBaseAccess;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

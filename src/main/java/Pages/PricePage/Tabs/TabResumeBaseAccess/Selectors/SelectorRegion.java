@@ -1,4 +1,4 @@
-package Selectors;
+package Pages.PricePage.Tabs.TabResumeBaseAccess.Selectors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

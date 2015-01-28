@@ -1,4 +1,4 @@
-package Entity;
+package Pages.PricePage.Entity;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

@@ -1,7 +1,6 @@
-package Forms;
+package Pages.PricePage.Forms;
 
-import Entity.Offer;
-import Entity.SpecialOfferCart;
+import Pages.PricePage.Entity.SpecialOfferCart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

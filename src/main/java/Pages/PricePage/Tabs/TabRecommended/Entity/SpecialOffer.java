@@ -1,10 +1,9 @@
-package Entity;
+package Pages.PricePage.Tabs.TabRecommended.Entity;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Offer {
+public class SpecialOffer {
     private final WebElement offer;
 
     public String giftTitle = null;
@@ -25,7 +24,7 @@ public class Offer {
     By actualPriceLocator = By.className("price-spoffers__actual-price");
     By specialOfferPlusLocator = By.className("price-spoffers__special-offer-plus");
 
-    public Offer(WebElement offer) {
+    public SpecialOffer(WebElement offer) {
         this.offer = offer;
 
         giftTitle = offer.findElement(giftTitleLocator).getText();

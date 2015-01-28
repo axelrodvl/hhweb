@@ -1,18 +1,17 @@
 package Dev;
 
-import Pages.PagePrice;
+import Pages.PricePage.PagePrice;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    private static final String CHROME_DRIVER_NAME = "chromedriver";
+    private static final String CHROME_DRIVER_NAME = "chromedriver.exe";
     private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
     protected static WebDriver driver = null;
 
     public static void main(String[] args) {
-
         System.setProperty(CHROME_DRIVER_PROPERTY, CHROME_DRIVER_NAME);
         driver = new ChromeDriver();
 

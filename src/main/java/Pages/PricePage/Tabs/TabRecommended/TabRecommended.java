@@ -1,6 +1,6 @@
-package Tabs;
+package Pages.PricePage.Tabs.TabRecommended;
 
-import Entity.Offer;
+import Pages.PricePage.Tabs.TabRecommended.Entity.SpecialOffer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +26,7 @@ public class TabRecommended {
         return this;
     }
 
-    public Offer getOffer(int offerNumber) {
-        return new Offer(offersList.get(offerNumber));
+    public SpecialOffer getOffer(int offerNumber) {
+        return new SpecialOffer(offersList.get(offerNumber));
     }
 }
