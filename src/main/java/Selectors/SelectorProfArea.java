@@ -2,10 +2,10 @@ package Selectors;
 
 import org.openqa.selenium.WebDriver;
 
-public class ProfAreaSelector {
+public class SelectorProfArea {
     private final WebDriver driver;
 
-    public ProfAreaSelector(WebDriver driver) {
+    public SelectorProfArea(WebDriver driver) {
         this.driver = driver;
     }
 }

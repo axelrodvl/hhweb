@@ -24,7 +24,7 @@ class Locations {
 
 }
 
-public class RegionSelector {
+public class SelectorRegion {
     private final WebDriver driver;
     private List<WebElement> regionsList;
     public int regionCount;
@@ -43,32 +43,32 @@ public class RegionSelector {
     By restOfRussiaCheckboxLocator = By.xpath(regionLocatorMainXpathBegin + Locations.restOfRussia + regionLocatorMainXpathEnd);
     // Rest of main locations here...
 
-    public RegionSelector(WebDriver driver) {
+    public SelectorRegion(WebDriver driver) {
         this.driver = driver;
 
         regionsList = driver.findElements(regionsListLocator);
         regionCount = regionsList.size();
     }
 
-    public RegionSelector selectRussia() {
+    public SelectorRegion selectRussia() {
         if (!driver.findElement(russiaCheckboxLocator).isSelected())
             driver.findElement(russiaCheckboxLocator).click();
         return this;
     }
 
-    public RegionSelector selectMoscow() {
+    public SelectorRegion selectMoscow() {
         if (!driver.findElement(moscowCheckboxLocator).isSelected())
             driver.findElement(moscowCheckboxLocator).click();
         return this;
     }
 
-    public RegionSelector selectSaintPetersburg() {
+    public SelectorRegion selectSaintPetersburg() {
         if (!driver.findElement(saintPetersburgCheckboxLocator).isSelected())
         driver.findElement(saintPetersburgCheckboxLocator).click();
         return this;
     }
 
-    public RegionSelector selectRestOfRussia() {
+    public SelectorRegion selectRestOfRussia() {
         if (!driver.findElement(restOfRussiaCheckboxLocator).isSelected())
             driver.findElement(restOfRussiaCheckboxLocator).click();
         return this;

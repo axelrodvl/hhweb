@@ -1,7 +1,7 @@
 package Tabs;
 
-import Selectors.ProfAreaSelector;
-import Selectors.RegionSelector;
+import Selectors.SelectorProfArea;
+import Selectors.SelectorRegion;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,14 +34,14 @@ public class TabResumeBaseAccess {
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/div[2]/button")
     private WebElement addToCartButton;
 
-    public RegionSelector regionSelector() {
+    public SelectorRegion regionSelector() {
         regionButton.click();
-        return new RegionSelector(driver);
+        return new SelectorRegion(driver);
     }
 
-    public ProfAreaSelector profAreaSelector() {
+    public SelectorProfArea profAreaSelector() {
         profAreaButton.click();
-        return new ProfAreaSelector(driver);
+        return new SelectorProfArea(driver);
     }
 
     public TabResumeBaseAccess addToCart() {

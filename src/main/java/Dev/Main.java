@@ -1,6 +1,6 @@
 package Dev;
 
-import Pages.PricePage;
+import Pages.PagePrice;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -36,18 +36,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 
 public class Main {
-    private static final String CHROME_DRIVER_NAME = "chromedriver.exe";
+    private static final String CHROME_DRIVER_NAME = "chromedriver";
     private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
     protected static WebDriver driver = null;
 
     public static void main(String[] args) {
         /*
-        Page pricePage = new PricePage();
-        pricePage.open();
+        Page pagePrice = new PagePrice();
+        pagePrice.open();
 
-        PriceMainForm priceMainForm = pricePage.getMainForm();
+        PriceMainForm priceMainForm = pagePrice.getMainForm();
 
-        pricePage.close();
+        pagePrice.close();
         */
 
         /*
@@ -69,24 +69,31 @@ public class Main {
         System.setProperty(CHROME_DRIVER_PROPERTY, CHROME_DRIVER_NAME);
         driver = new ChromeDriver();
 
-        PricePage pricePage = new PricePage(driver);
+        PagePrice pagePrice = new PagePrice(driver);
 
-        //pricePage.recommendedTab().addToCart(0);
-        //pricePage.recommendedTab().addToCart(1);
+        //pagePrice.recommendedTab().addToCart(0);
+        //pagePrice.recommendedTab().addToCart(1);
 
-        pricePage.recommendedTab().addToCart(0).addToCart(1);
+        if(pagePrice.cartForm().isEmpty())
+            System.out.println("CART IS EMPTY!");
 
-        pricePage.recommendedTab().getOffer(0).printOffer();
-        pricePage.recommendedTab().getOffer(1).printOffer();
+        pagePrice.recommendedTab().addToCart(0);
+        pagePrice.recommendedTab().addToCart(1);
 
-        //pricePage.resumeBaseAccessTab().regionSelector().selectMoscow().selectSaintPetersburg().selectRestOfRussia().close();
+        System.out.println("Cart old price:" + pagePrice.cartForm().oldCost());
+        System.out.println("Cart new price:" + pagePrice.cartForm().actualCost());
 
-        pricePage.resumeBaseAccessTab().regionSelector().selectSaintPetersburg();
-        //pricePage.resumeBaseAccessTab().regionSelector().selectRestOfRussia();
-        pricePage.resumeBaseAccessTab().regionSelector().close();
+        pagePrice.recommendedTab().getOffer(0).printOffer();
+        pagePrice.recommendedTab().getOffer(1).printOffer();
 
+        pagePrice.cartForm();
 
-        //pricePage.close();
+        //pagePrice.resumeBaseAccessTab().regionSelector().selectMoscow().selectSaintPetersburg().selectRestOfRussia().close();
+
+        pagePrice.resumeBaseAccessTab().regionSelector().selectSaintPetersburg().close();
+        pagePrice.resumeBaseAccessTab().regionSelector().selectRestOfRussia().close();
+
+        //pagePrice.close();
 
     }
 }
