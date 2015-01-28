@@ -1,5 +1,8 @@
 package Pages.PricePage.Forms;
 
+import Pages.PricePage.Entity.CountableServiceCart;
+import Pages.PricePage.Entity.GiftCart;
+import Pages.PricePage.Entity.ResumeAccessCart;
 import Pages.PricePage.Entity.SpecialOfferCart;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +14,10 @@ import java.util.List;
 
 public class FormCart {
     private final WebDriver driver;
-    private List<WebElement> specialOffersList;
+    public List<WebElement> specialOffersList;
+    public List<WebElement> countableServiceList;
+    public List<WebElement> resumeAccessList;
+    public List<WebElement> giftList;
 
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[2]")
     private WebElement formCartEmpty;
@@ -31,7 +37,10 @@ public class FormCart {
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[3]")
     private WebElement cartContentsSpecialOffer;
 
+    By resumeAccessLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[1]/li");
+    By countableServiceLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[2]/li");
     By specialOfferLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[3]/li");
+    By giftLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[4]/div");
 
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[3]")
     private WebElement cartTotal;
@@ -55,6 +64,12 @@ public class FormCart {
         if(!isEmpty()) {
             if(hasContentsSpecialOffer())
                 specialOffersList = driver.findElements(specialOfferLocator);
+            if(hasContentsCountableService())
+                countableServiceList = driver.findElements(countableServiceLocator);
+            if(hasContentsResumeAccess())
+                resumeAccessList = driver.findElements(resumeAccessLocator);
+            if(hasContentsGifts())
+                giftList = driver.findElements(giftLocator);
         }
     }
 
@@ -92,8 +107,20 @@ public class FormCart {
         return cartContentsSpecialOffer.isDisplayed();
     }
 
-    public SpecialOfferCart getSpecialOffer(int offerNumber) {
-        return new SpecialOfferCart(specialOffersList.get(offerNumber));
+    public SpecialOfferCart getSpecialOffer(int entryNumber) {
+        return new SpecialOfferCart(specialOffersList.get(entryNumber));
+    }
+
+    public CountableServiceCart getCountableService(int entryNumber) {
+        return new CountableServiceCart(countableServiceList.get(entryNumber));
+    }
+
+    public ResumeAccessCart getResumeAccess(int entryNumber) {
+        return new ResumeAccessCart(resumeAccessList.get(entryNumber));
+    }
+
+    public GiftCart getGift(int entryNumber) {
+        return new GiftCart(giftList.get(entryNumber));
     }
 
     public FormCart checkout() {
