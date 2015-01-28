@@ -1,5 +1,6 @@
 package Pages.PricePage.Tabs.TabResumeBaseAccess;
 
+import Pages.PricePage.Tabs.TabResumeBaseAccess.Selectors.SelectorProduct;
 import Pages.PricePage.Tabs.TabResumeBaseAccess.Selectors.SelectorProfArea;
 import Pages.PricePage.Tabs.TabResumeBaseAccess.Selectors.SelectorRegion;
 import org.openqa.selenium.By;
@@ -45,5 +46,9 @@ public class TabResumeBaseAccess {
     public TabResumeBaseAccess addToCart() {
         addToCartButton.click();
         return this;
+    }
+
+    public SelectorProduct selectProduct() {
+        return new SelectorProduct(driver);
     }
 }

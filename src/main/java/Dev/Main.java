@@ -27,12 +27,8 @@ public class Main {
             System.out.println("CART IS EMPTY!");
 
         pagePrice.recommendedTab().addToCart(0).addToCart(1);
-
-        try {
-            TimeUnit.MILLISECONDS.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        pagePrice.resumeBaseAccessTab().selectProduct().longAccessVariant(2);
+        pagePrice.resumeBaseAccessTab().addToCart();
 
         System.out.println("Cart old price:" + pagePrice.cartForm().oldCost());
         System.out.println("Cart new price:" + pagePrice.cartForm().actualCost());
@@ -45,18 +41,15 @@ public class Main {
         pagePrice.cartForm().getSpecialOffer(1).print();
 
         pagePrice.cartForm().getResumeAccess(0).print();
-        //pagePrice.cartForm().getResumeAccess(1).print();
 
-        pagePrice.cartForm().getCountableService(0).print();
-        pagePrice.cartForm().getCountableService(1).print();
+        //pagePrice.cartForm().getCountableService(0).print();
+        //pagePrice.cartForm().getCountableService(1).print();
 
         pagePrice.cartForm().getGift(0).print();
         pagePrice.cartForm().getGift(1).print();
 
-        pagePrice.recommendedTab().getOffer(0).print();
-        pagePrice.recommendedTab().getOffer(1).print();
-
-        pagePrice.cartForm();
+        //pagePrice.recommendedTab().getOffer(0).print();
+        //pagePrice.recommendedTab().getOffer(1).print();
 
         pagePrice.resumeBaseAccessTab().regionSelector().selectSaintPetersburg().close();
         pagePrice.resumeBaseAccessTab().regionSelector().selectRestOfRussia().close();
