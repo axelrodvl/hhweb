@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class SpecialOfferCart {
-    private final WebElement specialOffer;
-
     public String title = null;
     public Integer oldCost = null;
     public Integer actualCost = null;
@@ -15,8 +13,6 @@ public class SpecialOfferCart {
     By actualCostLocator = By.xpath("label/span[3]");
 
     public SpecialOfferCart(WebElement specialOffer) {
-        this.specialOffer = specialOffer;
-
         title = specialOffer.findElement(titleLocator).getText();
         actualCost = Integer.valueOf(specialOffer.findElement(actualCostLocator).getText().replaceAll("\\D+",""));
         if(specialOffer.findElement(oldCostLocator).getText().replaceAll("\\D+", "").length() > 0)

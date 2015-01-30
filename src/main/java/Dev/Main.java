@@ -1,5 +1,6 @@
 package Dev;
 
+import Pages.PricePage.Entity.Cart;
 import Pages.PricePage.PagePrice;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,19 +29,16 @@ public class Main {
 
         pagePrice.recommendedTab().addToCart(0).addToCart(1);
 
+        Cart cart = new Cart();
+        cart.add(pagePrice.recommendedTab().getOffer(0));
+        cart.add(pagePrice.recommendedTab().getOffer(1));
+
         pagePrice.resumeBaseAccessTab().regionSelector().selectSaintPetersburg().close();
         pagePrice.resumeBaseAccessTab().regionSelector().selectRestOfRussia().close();
 
         pagePrice.resumeBaseAccessTab().addToCart().longAccessVariant(2);
+        cart.add(pagePrice.resumeBaseAccessTab().getOfferLong(2));
 
-
-        pagePrice.resumeBaseAccessTab().getOfferShort(0).print();
-        pagePrice.resumeBaseAccessTab().getOfferShort(1).print();
-
-        pagePrice.resumeBaseAccessTab().getOfferMedium(0).print();
-
-        pagePrice.resumeBaseAccessTab().getOfferLong(0).print();
-        pagePrice.resumeBaseAccessTab().getOfferLong(1).print();
         pagePrice.resumeBaseAccessTab().getOfferLong(2).print();
 
         System.out.println("Cart old price:" + pagePrice.cartForm().oldCost());
@@ -63,7 +61,9 @@ public class Main {
         //pagePrice.recommendedTab().getOffer(0).print();
         //pagePrice.recommendedTab().getOffer(1).print();
 
+        cart.addCart(pagePrice.cartForm());
         pagePrice.close();
 
+        System.out.println("Cart equals = " + cart.cartEquals());
     }
 }

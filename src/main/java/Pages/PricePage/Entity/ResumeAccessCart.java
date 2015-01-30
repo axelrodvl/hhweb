@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class ResumeAccessCart {
-    private final WebElement resumeAccess;
-
     public String title = null;
     public Integer oldCost = null;
     public Integer actualCost = null;
@@ -15,8 +13,6 @@ public class ResumeAccessCart {
     By actualCostLocator = By.xpath("label/span[3]");
 
     public ResumeAccessCart(WebElement resumeAccess) {
-        this.resumeAccess = resumeAccess;
-
         title = resumeAccess.findElement(titleLocator).getText();
         actualCost = Integer.valueOf(resumeAccess.findElement(actualCostLocator).getText().replaceAll("\\D+",""));
         if(resumeAccess.findElement(oldCostLocator).getText().replaceAll("\\D+", "").length() > 0)

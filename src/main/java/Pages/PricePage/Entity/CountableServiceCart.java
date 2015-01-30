@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class CountableServiceCart {
-    private final WebElement countableService;
-
     public String title = null;
     public Integer count = null;
     public Integer costForOne = null;
@@ -19,8 +17,6 @@ public class CountableServiceCart {
     By actualCostLocator = By.xpath("label/span[3]");
 
     public CountableServiceCart(WebElement countableService) {
-        this.countableService = countableService;
-
         title = countableService.findElement(titleLocator).getText();
         count = Integer.valueOf(countableService.findElement(countLocator).getText().replaceAll("\\D+",""));
         costForOne = Integer.valueOf(countableService.findElement(costForOneLocator).getText().replaceAll("\\D+",""));
