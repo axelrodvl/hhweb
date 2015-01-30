@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class SpecialOffer {
-    private final WebElement offer;
-
     public String giftTitle = null;
     public String giftDesc = null;
     public String actionTitle = null;
@@ -25,8 +23,6 @@ public class SpecialOffer {
     By specialOfferPlusLocator = By.className("price-spoffers__special-offer-plus");
 
     public SpecialOffer(WebElement offer) {
-        this.offer = offer;
-
         giftTitle = offer.findElement(giftTitleLocator).getText();
         giftDesc = offer.findElement(giftDescLocator).getText();
         actionTitle = offer.findElement(actionTitleLocator).getText();

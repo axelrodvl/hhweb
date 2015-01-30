@@ -1,5 +1,7 @@
 package Pages.PricePage.Tabs.TabResumeBaseAccess;
 
+import Pages.PricePage.Tabs.TabRecommended.Entity.SpecialOffer;
+import Pages.PricePage.Tabs.TabResumeBaseAccess.Entity.ResumeAccess;
 import Pages.PricePage.Tabs.TabResumeBaseAccess.Selectors.SelectorProduct;
 import Pages.PricePage.Tabs.TabResumeBaseAccess.Selectors.SelectorProfArea;
 import Pages.PricePage.Tabs.TabResumeBaseAccess.Selectors.SelectorRegion;
@@ -13,16 +15,22 @@ import java.util.List;
 
 public class TabResumeBaseAccess {
     private final WebDriver driver;
-    private List<WebElement> offersList;
+    private List<WebElement> offersListShort;
+    private List<WebElement> offersListMedium;
+    private List<WebElement> offersListLong;
 
     public TabResumeBaseAccess(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
-        offersList = driver.findElements(offersLocator);
+        offersListShort = driver.findElements(offersLocatorShort);
+        offersListMedium = driver.findElements(offersLocatorMedium);
+        offersListLong = driver.findElements(offersLocatorLong);
     }
 
-    By offersLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[5]/div");
+    By offersLocatorShort = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[6]/div[1]/div/label");
+    By offersLocatorMedium = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[6]/div[2]/div/label");
+    By offersLocatorLong = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[6]/div[3]/div/label");
 
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[3]/div[2]")
     private WebElement regionButton;
@@ -30,8 +38,6 @@ public class TabResumeBaseAccess {
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[3]/div[2]")
     private WebElement profAreaButton;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/div[2]/button")
-    private WebElement addToCartButton;
 
     public SelectorRegion regionSelector() {
         regionButton.click();
@@ -43,12 +49,19 @@ public class TabResumeBaseAccess {
         return new SelectorProfArea(driver);
     }
 
-    public TabResumeBaseAccess addToCart() {
-        addToCartButton.click();
-        return this;
+    public SelectorProduct addToCart() {
+        return new SelectorProduct(driver);
     }
 
-    public SelectorProduct selectProduct() {
-        return new SelectorProduct(driver);
+    public ResumeAccess getOfferShort(int offerNumber) {
+        return new ResumeAccess(offersListShort.get(offerNumber));
+    }
+
+    public ResumeAccess getOfferMedium(int offerNumber) {
+        return new ResumeAccess(offersListMedium.get(offerNumber));
+    }
+
+    public ResumeAccess getOfferLong(int offerNumber) {
+        return new ResumeAccess(offersListLong.get(offerNumber));
     }
 }

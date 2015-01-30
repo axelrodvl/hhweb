@@ -27,8 +27,21 @@ public class Main {
             System.out.println("CART IS EMPTY!");
 
         pagePrice.recommendedTab().addToCart(0).addToCart(1);
-        pagePrice.resumeBaseAccessTab().selectProduct().longAccessVariant(2);
-        pagePrice.resumeBaseAccessTab().addToCart();
+
+        pagePrice.resumeBaseAccessTab().regionSelector().selectSaintPetersburg().close();
+        pagePrice.resumeBaseAccessTab().regionSelector().selectRestOfRussia().close();
+
+        pagePrice.resumeBaseAccessTab().addToCart().longAccessVariant(2);
+
+
+        pagePrice.resumeBaseAccessTab().getOfferShort(0).print();
+        pagePrice.resumeBaseAccessTab().getOfferShort(1).print();
+
+        pagePrice.resumeBaseAccessTab().getOfferMedium(0).print();
+
+        pagePrice.resumeBaseAccessTab().getOfferLong(0).print();
+        pagePrice.resumeBaseAccessTab().getOfferLong(1).print();
+        pagePrice.resumeBaseAccessTab().getOfferLong(2).print();
 
         System.out.println("Cart old price:" + pagePrice.cartForm().oldCost());
         System.out.println("Cart new price:" + pagePrice.cartForm().actualCost());
@@ -39,7 +52,6 @@ public class Main {
 
         pagePrice.cartForm().getSpecialOffer(0).print();
         pagePrice.cartForm().getSpecialOffer(1).print();
-
         pagePrice.cartForm().getResumeAccess(0).print();
 
         //pagePrice.cartForm().getCountableService(0).print();
@@ -50,9 +62,6 @@ public class Main {
 
         //pagePrice.recommendedTab().getOffer(0).print();
         //pagePrice.recommendedTab().getOffer(1).print();
-
-        pagePrice.resumeBaseAccessTab().regionSelector().selectSaintPetersburg().close();
-        pagePrice.resumeBaseAccessTab().regionSelector().selectRestOfRussia().close();
 
         pagePrice.close();
 
