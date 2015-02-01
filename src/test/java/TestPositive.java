@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 */
 
 public class TestPositive {
-    private static final String CHROME_DRIVER_NAME = "chromedriver.exe";
+    private static final String CHROME_DRIVER_NAME = "chromedriver";
     private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
     private static WebDriver driver = null;
     private static PagePrice pagePrice = null;

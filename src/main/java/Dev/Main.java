@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    private static final String CHROME_DRIVER_NAME = "chromedriver.exe";
+    private static final String CHROME_DRIVER_NAME = "chromedriver";
     private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
     protected static WebDriver driver = null;
 
@@ -33,10 +33,61 @@ public class Main {
         cart.add(pagePrice.recommendedTab().getOffer(0));
         cart.add(pagePrice.recommendedTab().getOffer(1));
 
+        System.out.println(pagePrice.resumeBaseAccessTab().getAdviceText());
+        System.out.println(pagePrice.resumeBaseAccessTab().getAdviceText());
+
         pagePrice.resumeBaseAccessTab().regionSelector().selectSaintPetersburg().close();
         pagePrice.resumeBaseAccessTab().regionSelector().selectRestOfRussia().close();
 
         pagePrice.resumeBaseAccessTab().addToCart().longAccessVariant(2);
+
+        pagePrice.resumeBaseAccessTab().checkResumeAccessUnlimited();
+
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("");
+
+        System.out.println(pagePrice.resumeBaseAccessTab().getCost());
+        System.out.println(pagePrice.resumeBaseAccessTab().getGift());
+        System.out.println(pagePrice.resumeBaseAccessTab().getAdviceText());
+        System.out.println(pagePrice.resumeBaseAccessTab().getAdvicePrice());
+
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("");
+
+        System.out.println("HAS ADVICE BEFORE = " + pagePrice.resumeBaseAccessTab().hasAdvice());
+        pagePrice.resumeBaseAccessTab().checkAdvice();
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("HAS ADVICE AFTER = " + pagePrice.resumeBaseAccessTab().hasAdvice());
+
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("");
+
+        System.out.println(pagePrice.resumeBaseAccessTab().getCost());
+        System.out.println(pagePrice.resumeBaseAccessTab().getGift());
+        System.out.println(pagePrice.resumeBaseAccessTab().getAdviceText());
+        System.out.println(pagePrice.resumeBaseAccessTab().getAdvicePrice());
+
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        System.out.println("");
+
         cart.add(pagePrice.resumeBaseAccessTab().getOfferLong(2));
 
         pagePrice.resumeBaseAccessTab().getOfferLong(2).print();
