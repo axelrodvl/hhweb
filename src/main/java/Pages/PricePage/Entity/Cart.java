@@ -39,19 +39,43 @@ public class Cart {
         // Instead, checking equals of costs in cart
         // It's possible, that first object.oldCost can be null, but second is not
         for(int i = 0; i < specialOffers.size(); i++) {
-            if (!specialOffers.get(i).actualCost.equals(specialOffersCart.get(i).actualCost))
+            if (!specialOffers.get(i).actualCost.equals(specialOffersCart.get(i).actualCost)) {
+                System.out.println("EXPECTED:");
+                specialOffers.get(i).print();
+
+                System.out.println("ACTUAL:");
+                specialOffersCart.get(i).print();
                 return false;
+            }
+
             if((specialOffers.get(i).oldCost != null) && (specialOffersCart.get(i).oldCost != null))
-                if (!specialOffers.get(i).oldCost.equals(specialOffersCart.get(i).oldCost))
+                if (!specialOffers.get(i).oldCost.equals(specialOffersCart.get(i).oldCost)) {
+                    System.out.println("EXPECTED:");
+                    specialOffers.get(i).print();
+                    System.out.println("ACTUAL:");
+                    specialOffersCart.get(i).print();
+
                     return false;
+                }
         }
 
         for(int i = 0; i < resumeAccesses.size(); i++) {
-            if (!resumeAccesses.get(i).actualCost.equals(resumeAccessCart.get(i).actualCost))
+            if (!resumeAccesses.get(i).actualCost.equals(resumeAccessCart.get(i).actualCost)) {
+                System.out.println("EXPECTED:");
+                resumeAccesses.get(i).print();
+                System.out.println("ACTUAL:");
+                resumeAccessCart.get(i).print();
                 return false;
+            }
             if((resumeAccesses.get(i).oldCost != null) && (resumeAccessCart.get(i).oldCost != null))
-                if (!resumeAccesses.get(i).oldCost.equals(resumeAccessCart.get(i).oldCost))
+                if (!resumeAccesses.get(i).oldCost.equals(resumeAccessCart.get(i).oldCost)) {
+                    System.out.println("EXPECTED:");
+                    resumeAccesses.get(i).print();
+                    System.out.println("ACTUAL:");
+                    resumeAccessCart.get(i).print();
+
                     return false;
+                }
         }
 
         return true;
