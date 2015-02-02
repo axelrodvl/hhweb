@@ -1,9 +1,10 @@
-package Pages.PricePage.Tabs.TabRecommended.Entity;
+package Pages.PricePage.Tabs.TabVacancyPublication.Entity;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class SpecialOffer {
+public class VacancyPublication {
+    /*
     public String giftTitle = null;
     public String giftDesc = null;
     public String actionTitle = null;
@@ -12,8 +13,7 @@ public class SpecialOffer {
     public String actualPrice = null;
     public String specialOfferPlus = null;
 
-    public Integer oldCost = null;
-    public Integer actualCost = null;
+    public Integer price = null;
 
     By giftTitleLocator = By.className("price-spoffers__gift-title");
     By giftDescLocator = By.className("price-spoffers__gift-desc");
@@ -22,8 +22,10 @@ public class SpecialOffer {
     By oldPriceLocator = By.className("price-spoffers__old-price");
     By actualPriceLocator = By.className("price-spoffers__actual-price");
     By specialOfferPlusLocator = By.className("price-spoffers__special-offer-plus");
+    */
 
-    public SpecialOffer(WebElement offer) {
+    public VacancyPublication(WebElement offer) {
+        /*
         giftTitle = offer.findElement(giftTitleLocator).getText();
         giftDesc = offer.findElement(giftDescLocator).getText();
         actionTitle = offer.findElement(actionTitleLocator).getText();
@@ -35,11 +37,10 @@ public class SpecialOffer {
         actualPrice = offer.findElement(actualPriceLocator).getText();
         specialOfferPlus = offer.findElement(specialOfferPlusLocator).getText();
 
-        if(oldPrice != null)
-            oldCost = Integer.valueOf(oldPrice.replaceAll("\\D+",""));
-        actualCost = Integer.valueOf(actualPrice.replaceAll("\\D+",""));
+        price = Integer.valueOf(actualPrice.replaceAll("\\D+",""));*/
     }
 
+    /*
     public void print() {
         System.out.println("OFFER:");
         System.out.println("__________________________________________________");
@@ -50,7 +51,10 @@ public class SpecialOffer {
         System.out.println("oldPrice: " + oldPrice);
         System.out.println("actualPrice: " + actualPrice);
         System.out.println("specialOfferPlus: " + specialOfferPlus);
+        System.out.println();
+        System.out.println("PRICE: " + price);
         System.out.println("__________________________________________________");
         System.out.println();
     }
+    */
 }

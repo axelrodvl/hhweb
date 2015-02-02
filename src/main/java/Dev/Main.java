@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    private static final String CHROME_DRIVER_NAME = "chromedriver";
+    private static final String CHROME_DRIVER_NAME = "chromedriver.exe";
     private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
     protected static WebDriver driver = null;
 
@@ -70,23 +70,6 @@ public class Main {
         }
 
         System.out.println("HAS ADVICE AFTER = " + pagePrice.resumeBaseAccessTab().hasAdvice());
-
-        System.out.println("---------------------------------------------------");
-        System.out.println("---------------------------------------------------");
-        System.out.println("---------------------------------------------------");
-        System.out.println("---------------------------------------------------");
-        System.out.println("");
-
-        System.out.println(pagePrice.resumeBaseAccessTab().getCost());
-        System.out.println(pagePrice.resumeBaseAccessTab().getGift());
-        System.out.println(pagePrice.resumeBaseAccessTab().getAdviceText());
-        System.out.println(pagePrice.resumeBaseAccessTab().getAdvicePrice());
-
-        System.out.println("---------------------------------------------------");
-        System.out.println("---------------------------------------------------");
-        System.out.println("---------------------------------------------------");
-        System.out.println("---------------------------------------------------");
-        System.out.println("");
 
         cart.add(pagePrice.resumeBaseAccessTab().getOfferLong(2));
 

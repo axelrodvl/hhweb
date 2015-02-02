@@ -1,5 +1,6 @@
 package Pages.PricePage.Entity;
 
+import Pages.PricePage.Tabs.TabRecommended.Entity.SpecialOffer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -17,6 +18,12 @@ public class SpecialOfferCart {
         actualCost = Integer.valueOf(specialOffer.findElement(actualCostLocator).getText().replaceAll("\\D+",""));
         if(specialOffer.findElement(oldCostLocator).getText().replaceAll("\\D+", "").length() > 0)
             oldCost = Integer.valueOf(specialOffer.findElement(oldCostLocator).getText().replaceAll("\\D+", ""));
+    }
+
+    public SpecialOfferCart(SpecialOffer specialOffer) {
+        title = specialOffer.specialOfferTitle;
+        oldCost = specialOffer.oldCost;
+        actualCost = specialOffer.actualCost;
     }
 
     public void print() {

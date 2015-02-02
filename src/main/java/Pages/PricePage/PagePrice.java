@@ -3,6 +3,7 @@ package Pages.PricePage;
 import Pages.PricePage.Forms.FormCart;
 import Pages.PricePage.Tabs.TabRecommended.TabRecommended;
 import Pages.PricePage.Tabs.TabResumeBaseAccess.TabResumeBaseAccess;
+import Pages.PricePage.Tabs.TabVacancyPublication.TabVacancyPublication;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,9 +28,6 @@ public class PagePrice {
     @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/ul/a[3]")
     private WebElement tabVacancyPublication;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/ul/a[4]")
-    private WebElement tabAdditionalService;
-
     public TabRecommended recommendedTab() {
         tabRecommended.click();
         return new TabRecommended(driver);
@@ -40,16 +38,10 @@ public class PagePrice {
         return new TabResumeBaseAccess(driver);
     }
 
-    /*
     public TabVacancyPublication vacancyPublicationTab() {
         tabVacancyPublication.click();
         return new TabVacancyPublication(driver);
     }
-    public TabAdditionalService additionalServiceTab() {
-        tabAdditionalService.click();
-        return new TabAdditionalService(driver);
-    }
-    */
 
     public FormCart cartForm() {
         return new FormCart(driver);

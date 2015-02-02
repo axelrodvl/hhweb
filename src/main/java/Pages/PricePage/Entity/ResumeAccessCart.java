@@ -1,5 +1,6 @@
 package Pages.PricePage.Entity;
 
+import Pages.PricePage.Tabs.TabResumeBaseAccess.Entity.ResumeAccess;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -17,6 +18,12 @@ public class ResumeAccessCart {
         actualCost = Integer.valueOf(resumeAccess.findElement(actualCostLocator).getText().replaceAll("\\D+",""));
         if(resumeAccess.findElement(oldCostLocator).getText().replaceAll("\\D+", "").length() > 0)
             oldCost = Integer.valueOf(resumeAccess.findElement(oldCostLocator).getText().replaceAll("\\D+", ""));
+    }
+
+    public ResumeAccessCart(ResumeAccess resumeAccess) {
+        title = resumeAccess.title;
+        actualCost = resumeAccess.price;
+        oldCost = null;
     }
 
     public void print() {
