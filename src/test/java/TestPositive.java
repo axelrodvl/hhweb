@@ -1,8 +1,6 @@
 import Pages.PricePage.Entity.Cart;
 import Pages.PricePage.PagePrice;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -22,8 +20,8 @@ public class TestPositive {
     private static WebDriver driver = null;
     private static PagePrice pagePrice = null;
 
-    @BeforeClass
-    public static void openBrowser() throws Exception {
+    @Before
+    public void openBrowser() throws Exception {
         System.setProperty(CHROME_DRIVER_PROPERTY, CHROME_DRIVER_NAME);
         driver = new ChromeDriver();
 
@@ -32,10 +30,62 @@ public class TestPositive {
     }
 
     /**
-     * 1.1.1 Покупка всех специальных предложений и доступа к базе резюме
+     * 1.1.1 Покупка первого специального предложения
      */
     @Test
-    public void setNameFull() throws Exception {
+    public void buyFirstSpecialOffer() throws Exception {
+        // Test data
+        Cart cart = new Cart();
+
+        // Test actions
+        pagePrice.recommendedTab().addToCart(0);
+        cart.add(pagePrice.recommendedTab().getOffer(0));
+        cart.addCart(pagePrice.cartForm());
+
+        // Test assertions
+        assertTrue(cart.cartEquals());
+    }
+
+    /**
+     * 1.1.2 Покупка второго специального предложения
+     */
+    @Test
+    public void buySecondSpecialOffer() throws Exception {
+        // Test data
+        Cart cart = new Cart();
+
+        // Test actions
+        pagePrice.recommendedTab().addToCart(1);
+        cart.add(pagePrice.recommendedTab().getOffer(1));
+        cart.addCart(pagePrice.cartForm());
+
+        // Test assertions
+        assertTrue(cart.cartEquals());
+    }
+
+    /**
+     * 1.1.3 Покупка всех специальных предложений
+     */
+    @Test
+    public void buyAllSpecialOffers() throws Exception {
+        // Test data
+        Cart cart = new Cart();
+
+        // Test actions
+        pagePrice.recommendedTab().addToCart(0).addToCart(1);
+        cart.add(pagePrice.recommendedTab().getOffer(0));
+        cart.add(pagePrice.recommendedTab().getOffer(1));
+        cart.addCart(pagePrice.cartForm());
+
+        // Test assertions
+        assertTrue(cart.cartEquals());
+    }
+
+    /**
+     * 1.1.4 Покупка всех специальных предложений и доступа к базе резюме
+     */
+    @Test
+    public void buyAllSpecialOffersAndResumeBaseAccess() throws Exception {
         // Test data
         Cart cart = new Cart();
 
@@ -53,8 +103,8 @@ public class TestPositive {
         assertTrue(cart.cartEquals());
     }
 
-    @AfterClass
-    public static void closePage() {
+    @After
+    public void closePage() {
         pagePrice.close();
     }
 }

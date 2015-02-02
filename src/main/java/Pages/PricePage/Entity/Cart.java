@@ -23,10 +23,12 @@ public class Cart {
     }
 
     public void addCart(FormCart formCart) {
-        for(WebElement entry : formCart.specialOffersList)
-            specialOffersCart.add(new SpecialOfferCart(entry));
-        for(WebElement entry : formCart.resumeAccessList)
-            resumeAccessCart.add(new ResumeAccessCart(entry));
+        if(formCart.specialOffersList != null)
+            for(WebElement entry : formCart.specialOffersList)
+                specialOffersCart.add(new SpecialOfferCart(entry));
+        if(formCart.resumeAccessList != null)
+            for(WebElement entry : formCart.resumeAccessList)
+                resumeAccessCart.add(new ResumeAccessCart(entry));
     }
 
     public boolean cartEquals() {
