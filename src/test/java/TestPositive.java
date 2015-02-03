@@ -11,7 +11,12 @@ import static org.junit.Assert.*;
 /*
 1. Покупка услуг
         1.1 Положительные тесты
-            1.1.1 Покупка всех специальных предложений и доступа к базе резюме
+            1.1.1 Покупка первого специального предложения
+            1.1.2 Покупка второго специального предложения
+            1.1.3 Покупка всех специальных предложений
+            1.1.4 Покупка доступа к базе резюме
+            1.1.5 Отображение подсказки о более выгодном предложении (по регионам)
+            1.1.6 Покупка двух специальных предложений и базы резюме
 */
 
 public class TestPositive {
@@ -43,7 +48,7 @@ public class TestPositive {
         cart.addCart(pagePrice.cartForm());
 
         // Test assertions
-        assertTrue(cart.cartEquals());
+        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
     }
 
     /**
@@ -60,7 +65,7 @@ public class TestPositive {
         cart.addCart(pagePrice.cartForm());
 
         // Test assertions
-        assertTrue(cart.cartEquals());
+        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
     }
 
     /**
@@ -78,11 +83,65 @@ public class TestPositive {
         cart.addCart(pagePrice.cartForm());
 
         // Test assertions
-        assertTrue(cart.cartEquals());
+        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
     }
 
     /**
-     * 1.1.4 Покупка всех специальных предложений и доступа к базе резюме
+     * 1.1.4 Покупка доступа к базе резюме
+     */
+    @Test
+    public void buyResumeBaseAccess() throws Exception {
+        // Test data
+        Cart cart = new Cart();
+
+        // Test actions
+        pagePrice.resumeBaseAccessTab().addToCart().longAccessVariant(2);
+        cart.add(pagePrice.resumeBaseAccessTab().getOfferLong(2));
+        cart.addCart(pagePrice.cartForm());
+
+        // Test assertions
+        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
+    }
+
+    /**
+     * 1.1.5 Отображение подсказки о более выгодном предложении (по регионам)
+     */
+    @Test
+    public void buyResumeBaseAccessRegionAdvice() throws Exception {
+        // Test data
+        Cart cart = new Cart();
+
+        // Test actions
+        pagePrice.recommendedTab().addToCart(0).addToCart(1);
+        cart.add(pagePrice.recommendedTab().getOffer(0));
+        cart.add(pagePrice.recommendedTab().getOffer(1));
+        pagePrice.resumeBaseAccessTab().regionSelector().selectSaintPetersburg().close();
+        pagePrice.resumeBaseAccessTab().regionSelector().selectRestOfRussia().close();
+
+        // Additional test assertion
+        assertTrue("Region advice is visible: ", pagePrice.resumeBaseAccessTab().hasAdvice());
+
+        pagePrice.resumeBaseAccessTab().checkAdvice();
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Additional test assertion
+        assertFalse("Region advice is not visible after click: ", pagePrice.resumeBaseAccessTab().hasAdvice());
+
+        pagePrice.resumeBaseAccessTab().addToCart().longAccessVariant(2);
+        cart.add(pagePrice.resumeBaseAccessTab().getOfferLong(2));
+        cart.addCart(pagePrice.cartForm());
+
+        // Test assertions
+        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
+    }
+
+    /**
+     * 1.1.6 Покупка двух специальных предложений и базы резюме
      */
     @Test
     public void buyAllSpecialOffersAndResumeBaseAccess() throws Exception {
@@ -93,14 +152,12 @@ public class TestPositive {
         pagePrice.recommendedTab().addToCart(0).addToCart(1);
         cart.add(pagePrice.recommendedTab().getOffer(0));
         cart.add(pagePrice.recommendedTab().getOffer(1));
-        pagePrice.resumeBaseAccessTab().regionSelector().selectSaintPetersburg().close();
-        pagePrice.resumeBaseAccessTab().regionSelector().selectRestOfRussia().close();
         pagePrice.resumeBaseAccessTab().addToCart().longAccessVariant(2);
         cart.add(pagePrice.resumeBaseAccessTab().getOfferLong(2));
         cart.addCart(pagePrice.cartForm());
 
         // Test assertions
-        assertTrue(cart.cartEquals());
+        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
     }
 
     @After
