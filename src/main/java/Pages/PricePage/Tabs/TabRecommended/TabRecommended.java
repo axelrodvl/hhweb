@@ -12,8 +12,8 @@ public class TabRecommended {
     private List<WebElement> offersList;
     public int offersCount;
 
-    By offersLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[1]/div/div/div[script[@data-name=\"HH/Cart/SpecialOffer\"]]");
-    By addToCartButtonLocator = By.xpath("form/div/button");
+    By offersLocator = By.cssSelector("div.m-colspan2");
+    By addToCartButtonLocator = By.cssSelector("form > div > button");
 
     public TabRecommended(WebDriver driver) {
         this.driver = driver;
