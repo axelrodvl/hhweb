@@ -15,13 +15,13 @@ public class SpecialOffer {
     public Integer oldCost = null;
     public Integer actualCost = null;
 
-    By giftTitleLocator = By.className("price-spoffers__gift-title");
-    By giftDescLocator = By.className("price-spoffers__gift-desc");
-    By actionTitleLocator = By.className("price-spoffers__action-title");
-    By specialOfferTitleLocator = By.className("price-spoffers__special-offer-title");
-    By oldPriceLocator = By.className("price-spoffers__old-price");
-    By actualPriceLocator = By.className("price-spoffers__actual-price");
-    By specialOfferPlusLocator = By.className("price-spoffers__special-offer-plus");
+    By giftTitleLocator = By.cssSelector("div.price-spoffers__gift-title");
+    By giftDescLocator = By.cssSelector("div.price-spoffers__gift-desc");
+    By actionTitleLocator = By.cssSelector("div.price-spoffers__action-title");
+    By specialOfferTitleLocator = By.cssSelector("div.price-spoffers__special-offer-title");
+    By oldPriceLocator = By.cssSelector("span.price-spoffers__old-price");
+    By actualPriceLocator = By.cssSelector("span.price-spoffers__actual-price");
+    By specialOfferPlusLocator = By.cssSelector("div.price-spoffers__special-offer-plus");
 
     public SpecialOffer(WebElement offer) {
         giftTitle = offer.findElement(giftTitleLocator).getText();

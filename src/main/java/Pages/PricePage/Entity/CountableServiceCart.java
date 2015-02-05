@@ -10,11 +10,19 @@ public class CountableServiceCart {
     public Integer oldCost = null;
     public Integer actualCost = null;
 
+    By titleLocator = By.cssSelector("span.price-cart__item-title");
+    By countLocator = By.cssSelector("span.price-cart__item-title > strong");
+    By costForOneLocator = By.cssSelector("span.price-cart__cost-for-one");
+    By oldCostLocator = By.cssSelector("span.HH-PriceCart-Item-OldPrice");
+    By actualCostLocator = By.cssSelector("span.HH-PriceCart-Item-ActualCost");
+
+    /*
     By titleLocator = By.className("price-cart__item-title");
     By countLocator = By.xpath("label/span[1]/strong");
     By costForOneLocator = By.className("price-cart__cost-for-one");
     By oldCostLocator = By.xpath("label/span[2]");
     By actualCostLocator = By.xpath("label/span[3]");
+    */
 
     public CountableServiceCart(WebElement countableService) {
         title = countableService.findElement(titleLocator).getText();

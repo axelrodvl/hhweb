@@ -9,9 +9,9 @@ public class ResumeAccessCart {
     public Integer oldCost = null;
     public Integer actualCost = null;
 
-    By titleLocator = By.className("price-cart__item-title");
-    By oldCostLocator = By.xpath("label/span[2]");
-    By actualCostLocator = By.xpath("label/span[3]");
+    By titleLocator = By.cssSelector("span.price-cart__item-title");
+    By oldCostLocator = By.cssSelector("span.HH-PriceCart-Item-OldPrice");
+    By actualCostLocator = By.cssSelector("span.HH-PriceCart-Item-ActualCost");
 
     public ResumeAccessCart(WebElement resumeAccess) {
         title = resumeAccess.findElement(titleLocator).getText();

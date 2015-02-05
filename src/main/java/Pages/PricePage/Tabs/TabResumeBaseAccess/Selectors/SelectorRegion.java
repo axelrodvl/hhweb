@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+// THIS IS PROTOTYPE!
+
 class Locations {
     public static String russia = "2000233";
     public static String moscow = "2000231";
