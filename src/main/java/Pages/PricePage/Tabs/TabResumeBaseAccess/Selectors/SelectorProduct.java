@@ -14,11 +14,11 @@ public class SelectorProduct {
     private List<WebElement> mediumAccess;
     private List<WebElement> longAccess;
 
-    By shortAccessLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[6]/div[1]/div/label/input");
-    By mediumAccessLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[6]/div[2]/div/label/input");
-    By longAccessLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[6]/div[3]/div/label/input");
+    By shortAccessLocator = By.cssSelector("div.price-resume-access__period-group_bottom.HH-Price-ResumeAccess-Period-Group_short > div > label > input");
+    By mediumAccessLocator = By.cssSelector("div.price-resume-access__period-group_bottom.HH-Price-ResumeAccess-Period-Group_medium > div > label > input");
+    By longAccessLocator = By.cssSelector("div.price-resume-access__period-group_bottom.HH-Price-ResumeAccess-Period-Group_long > div > label > input");
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/div[2]/button")
+    @FindBy(css = "div.price-resume-access__summary > div.price-spoffers__button > button")
     private WebElement addToCartButton;
 
     public SelectorProduct(WebDriver driver) {
