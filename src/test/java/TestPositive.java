@@ -48,7 +48,7 @@ public class TestPositive {
         cart.addCart(pagePrice.cartForm());
 
         // Test assertions
-        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
+        assertTrue("Cart contents is not equal to chosen at page: ", cart.cartEquals());
     }
 
     /**
@@ -65,7 +65,7 @@ public class TestPositive {
         cart.addCart(pagePrice.cartForm());
 
         // Test assertions
-        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
+        assertTrue("Cart contents is not equal to chosen at page: ", cart.cartEquals());
     }
 
     /**
@@ -83,7 +83,7 @@ public class TestPositive {
         cart.addCart(pagePrice.cartForm());
 
         // Test assertions
-        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
+        assertTrue("Cart contents is not equal to chosen at page: ", cart.cartEquals());
     }
 
     /**
@@ -100,7 +100,7 @@ public class TestPositive {
         cart.addCart(pagePrice.cartForm());
 
         // Test assertions
-        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
+        assertTrue("Cart contents is not equal to chosen at page: ", cart.cartEquals());
     }
 
     /**
@@ -119,25 +119,25 @@ public class TestPositive {
         pagePrice.resumeBaseAccessTab().regionSelector().selectRestOfRussia().close();
 
         // Additional test assertion
-        assertTrue("Region advice is visible: ", pagePrice.resumeBaseAccessTab().hasAdvice());
+        assertTrue("Region advice is not visible: ", pagePrice.resumeBaseAccessTab().hasAdvice());
 
         pagePrice.resumeBaseAccessTab().checkAdvice();
 
         try {
-            TimeUnit.MILLISECONDS.sleep(1000);
+            TimeUnit.MILLISECONDS.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         // Additional test assertion
-        assertFalse("Region advice is not visible after click: ", pagePrice.resumeBaseAccessTab().hasAdvice());
+        assertFalse("Region advice is visible after click: ", pagePrice.resumeBaseAccessTab().hasAdvice());
 
         pagePrice.resumeBaseAccessTab().addToCart().longAccessVariant(2);
         cart.add(pagePrice.resumeBaseAccessTab().getOfferLong(2));
         cart.addCart(pagePrice.cartForm());
 
         // Test assertions
-        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
+        assertTrue("Cart contents is not equal to chosen at page: ", cart.cartEquals());
     }
 
     /**
@@ -157,7 +157,7 @@ public class TestPositive {
         cart.addCart(pagePrice.cartForm());
 
         // Test assertions
-        assertTrue("Cart contents is equal to chosen at page: ", cart.cartEquals());
+        assertTrue("Cart contents is not equal to chosen at page: ", cart.cartEquals());
     }
 
     @After
