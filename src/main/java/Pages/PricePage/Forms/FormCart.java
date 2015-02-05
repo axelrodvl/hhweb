@@ -19,42 +19,39 @@ public class FormCart {
     public List<WebElement> resumeAccessList;
     public List<WebElement> giftList;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[2]")
+    @FindBy(css = "div.HH-PriceCart-Empty")
     private WebElement formCartEmpty;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]")
+    @FindBy(css = "div.HH-PriceCart")
     private WebElement formCartNotEmpty;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]")
+    @FindBy(css = "div.price-cart__contents")
     private WebElement cartContents;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[1]")
+    @FindBy(css = "ol.HH-PriceCart-Items_resumeAccess")
     private WebElement cartContentsResumeAccess;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[2]")
+    @FindBy(css = "ol.HH-PriceCart-Items_countableService")
     private WebElement cartContentsCountableService;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[3]")
+    @FindBy(css = "ol.HH-PriceCart-Items_specialOffer")
     private WebElement cartContentsSpecialOffer;
 
-    By resumeAccessLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[1]/li");
-    By countableServiceLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[2]/li");
-    By specialOfferLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[2]/ol[3]/li");
-    By giftLocator = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[4]/div");
+    By resumeAccessLocator = By.cssSelector("ol.price-cart__items.HH-PriceCart-Items_resumeAccess > li");
+    By countableServiceLocator = By.cssSelector("ol.price-cart__items.HH-PriceCart-Items_countableService > li");
+    By specialOfferLocator = By.cssSelector("ol.price-cart__items.HH-PriceCart-Items_specialOffer > li");
+    By giftLocator = By.cssSelector("div.price-cart__gifts.HH-PriceCart-Gifts > div");
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[3]")
-    private WebElement cartTotal;
-
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[3]/div[1]/span[2]/span")
+    @FindBy(css = "span.price-cart__total-cost > span")
     private WebElement cartTotalOldCost;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[3]/div[1]/span[2]/strong/span")
+    @FindBy(css = "span.price-cart__total-cost > strong > span")
     private WebElement cartTotalActualCost;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[4]")
+    @FindBy(css = "div.price-cart__gifts.HH-PriceCart-Gifts")
     private WebElement cartGifts;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[2]/div/div[1]/div[5]")
+    @FindBy(css = "div.price-cart__proceed > a")
     private WebElement cartProceed;
 
     public FormCart(WebDriver driver) {

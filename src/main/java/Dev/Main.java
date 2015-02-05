@@ -19,8 +19,23 @@ public class Main {
 
         PagePrice pagePrice = new PagePrice(driver);
 
+        System.out.println("hasContentsCountableService: " + pagePrice.cartForm().hasContentsCountableService());
+        System.out.println("hasContentsResumeAccess: " + pagePrice.cartForm().hasContentsResumeAccess());
+        System.out.println("hasContentsSpecialOffer: " + pagePrice.cartForm().hasContentsSpecialOffer());
 
 
+        try {
+            TimeUnit.MILLISECONDS.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        System.out.println("hasContentsCountableService: " + pagePrice.cartForm().hasContentsCountableService());
+        System.out.println("hasContentsResumeAccess: " + pagePrice.cartForm().hasContentsResumeAccess());
+        System.out.println("hasContentsSpecialOffer: " + pagePrice.cartForm().hasContentsSpecialOffer());
+
+        /*
         try {
             TimeUnit.MILLISECONDS.sleep(2000);
         } catch (InterruptedException e) {
@@ -101,6 +116,6 @@ public class Main {
         cart.addCart(pagePrice.cartForm());
         pagePrice.close();
 
-        System.out.println("Cart equals = " + cart.cartEquals());
+        System.out.println("Cart equals = " + cart.cartEquals());*/
     }
 }

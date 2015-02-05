@@ -4,6 +4,7 @@ import Pages.PricePage.Forms.FormCart;
 import Pages.PricePage.Tabs.TabRecommended.TabRecommended;
 import Pages.PricePage.Tabs.TabResumeBaseAccess.TabResumeBaseAccess;
 import Pages.PricePage.Tabs.TabVacancyPublication.TabVacancyPublication;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,14 +20,15 @@ public class PagePrice {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/ul/a[1]")
+    @FindBy(css = "a[href=\"#recommended\"]")
     private WebElement tabRecommended;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/ul/a[2]")
+    @FindBy(css = "a[href=\"#dbaccess\"]")
     private WebElement tabResumeBaseAccess;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/ul/a[3]")
+    @FindBy(css = "a[href=\"#publications\"]")
     private WebElement tabVacancyPublication;
+
 
     public TabRecommended recommendedTab() {
         tabRecommended.click();
