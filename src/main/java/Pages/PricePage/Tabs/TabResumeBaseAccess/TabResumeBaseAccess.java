@@ -29,43 +29,42 @@ public class TabResumeBaseAccess {
         offersListLong = driver.findElements(offersLocatorLong);
     }
 
-    By offersLocatorShort = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[6]/div[1]/div/label");
-    By offersLocatorMedium = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[6]/div[2]/div/label");
-    By offersLocatorLong = By.xpath("//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[6]/div[3]/div/label");
+    By offersLocatorShort = By.cssSelector("div.price-resume-access__period-group_bottom.HH-Price-ResumeAccess-Period-Group_short > div > label");
+    By offersLocatorMedium = By.cssSelector("div.price-resume-access__period-group_bottom.HH-Price-ResumeAccess-Period-Group_medium > div > label");
+    By offersLocatorLong = By.cssSelector("div.price-resume-access__period-group_bottom.HH-Price-ResumeAccess-Period-Group_long > div > label");
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[3]/div[2]")
+    @FindBy(css = "div.HH-Price-ResumeAccess-ChangeRegion.price-resume-access__change-item")
     private WebElement regionButton;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[3]/div[2]")
+    @FindBy(css = "div.HH-Price-ResumeAccess-ChangeProfArea.price-resume-access__change-item")
     private WebElement profAreaButton;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/label/input")
+    @FindBy(css = "div.price-resume-access__summary > label > input")
     private WebElement resumeAccessUnlimitedCheckbox;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/span")
+    @FindBy(css = "div.price-resume-access__summary > span > span")
     private WebElement costForm;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[1]")
+    @FindBy(css = "div.price-resume-access-gift.HH-Price-ResumeAccess-Gift")
     private WebElement giftForm;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/div[1]")
+    @FindBy(css = "div.HH-Price-ResumeAccess-Advice")
     private WebElement adviceBlock;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/div[1]/span/span[1]/span[1]")
+    @FindBy(css = "span.HH-Price-ResumeAccess-Advice-Region")
     private WebElement adviceRegion;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/div[1]/span/span[1]/span[2]")
+    @FindBy(css = "span.HH-Price-ResumeAccess-Advice-Separator")
     private WebElement adviceSeparator;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/div[1]/span/span[1]/span[3]")
+    @FindBy(css = "span.HH-Price-ResumeAccess-Advice-ProfArea")
     private WebElement adviceProfArea;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/div[1]/span/span[4]/span")
+    @FindBy(css = "span.HH-Price-ResumeAccess-Advice-DifferentCost > span")
     private WebElement advicePrice;
 
-    @FindBy(xpath = "//*[@id=\"js-disabled\"]/body/div[5]/div/div/div[2]/div[1]/div/ul/li[2]/div/div/div[7]/div[1]/span/span[1]")
+    @FindBy(css = "span.HH-Price-ResumeAccess-Advice-Options")
     private WebElement adviceButton;
-
 
     public SelectorRegion regionSelector() {
         regionButton.click();
