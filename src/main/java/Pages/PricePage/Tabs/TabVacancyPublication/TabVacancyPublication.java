@@ -12,8 +12,9 @@ public class TabVacancyPublication {
     private List<WebElement> offersList;
     public int offersCount;
 
-    By offersLocator = By.xpath("");
-    By addToCartButtonLocator = By.xpath("form/div/button");
+    By offersLocator = By.cssSelector("li.flat-tabs__content.HH-PriceCart-Tab.g-expand div.price-countable-service");
+    By countEditLocator = By.cssSelector("input");
+    By addToCartButtonLocator = By.cssSelector("a");
 
     public TabVacancyPublication(WebDriver driver) {
         this.driver = driver;
@@ -21,7 +22,9 @@ public class TabVacancyPublication {
         offersCount = offersList.size();
     }
 
-    public TabVacancyPublication addToCart(int offerNumber) {
+    public TabVacancyPublication addToCart(int count, int offerNumber) {
+        offersList.get(offerNumber).findElement(countEditLocator).clear();
+        offersList.get(offerNumber).findElement(countEditLocator).sendKeys(Integer.toString(count));
         offersList.get(offerNumber).findElement(addToCartButtonLocator).click();
         return this;
     }

@@ -19,6 +19,12 @@ public class Main {
 
         PagePrice pagePrice = new PagePrice(driver);
 
+        pagePrice.vacancyPublicationTab().addToCart(1, 0);
+        pagePrice.vacancyPublicationTab().addToCart(2, 1);
+        pagePrice.vacancyPublicationTab().addToCart(3, 2);
+        pagePrice.vacancyPublicationTab().addToCart(4, 3);
+
+        /*
         System.out.println("hasContentsCountableService: " + pagePrice.cartForm().hasContentsCountableService());
         System.out.println("hasContentsResumeAccess: " + pagePrice.cartForm().hasContentsResumeAccess());
         System.out.println("hasContentsSpecialOffer: " + pagePrice.cartForm().hasContentsSpecialOffer());
@@ -34,6 +40,7 @@ public class Main {
         System.out.println("hasContentsCountableService: " + pagePrice.cartForm().hasContentsCountableService());
         System.out.println("hasContentsResumeAccess: " + pagePrice.cartForm().hasContentsResumeAccess());
         System.out.println("hasContentsSpecialOffer: " + pagePrice.cartForm().hasContentsSpecialOffer());
+        */
 
         /*
         try {
