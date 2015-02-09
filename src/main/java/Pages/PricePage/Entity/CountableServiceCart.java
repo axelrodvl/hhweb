@@ -1,5 +1,6 @@
 package Pages.PricePage.Entity;
 
+import Pages.PricePage.Tabs.TabVacancyPublication.Entity.VacancyPublication;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -16,14 +17,6 @@ public class CountableServiceCart {
     By oldCostLocator = By.cssSelector("span.HH-PriceCart-Item-OldPrice");
     By actualCostLocator = By.cssSelector("span.HH-PriceCart-Item-ActualCost");
 
-    /*
-    By titleLocator = By.className("price-cart__item-title");
-    By countLocator = By.xpath("label/span[1]/strong");
-    By costForOneLocator = By.className("price-cart__cost-for-one");
-    By oldCostLocator = By.xpath("label/span[2]");
-    By actualCostLocator = By.xpath("label/span[3]");
-    */
-
     public CountableServiceCart(WebElement countableService) {
         title = countableService.findElement(titleLocator).getText();
         count = Integer.valueOf(countableService.findElement(countLocator).getText().replaceAll("\\D+",""));
@@ -31,6 +24,22 @@ public class CountableServiceCart {
         actualCost = Integer.valueOf(countableService.findElement(actualCostLocator).getText().replaceAll("\\D+",""));
         if(countableService.findElement(oldCostLocator).getText().replaceAll("\\D+", "").length() > 0)
             oldCost = Integer.valueOf(countableService.findElement(oldCostLocator).getText().replaceAll("\\D+", ""));
+    }
+
+    public CountableServiceCart(VacancyPublication vacancyPublication) {
+        title = vacancyPublication.title;
+        count = vacancyPublication.count;
+        costForOne = vacancyPublication.price;
+        oldCost = count * costForOne;
+
+        if(count < 5)
+            actualCost = count * vacancyPublication.price;
+        else if(count < 10)
+            actualCost = count * vacancyPublication.priceFrom5;
+        else if(count < 50)
+            actualCost = count * vacancyPublication.priceFrom10;
+        else actualCost = count * vacancyPublication.priceFrom50;
+        //
     }
 
     public void print() {

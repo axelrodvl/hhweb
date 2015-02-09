@@ -4,57 +4,46 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class VacancyPublication {
-    /*
-    public String giftTitle = null;
-    public String giftDesc = null;
-    public String actionTitle = null;
-    public String specialOfferTitle = null;
-    public String oldPrice = null;
-    public String actualPrice = null;
-    public String specialOfferPlus = null;
-
+    public String title = null;
+    public Integer count = null;
     public Integer price = null;
+    public Integer priceFrom5 = null;
+    public Integer priceFrom10 = null;
+    public Integer priceFrom50 = null;
 
-    By giftTitleLocator = By.className("price-spoffers__gift-title");
-    By giftDescLocator = By.className("price-spoffers__gift-desc");
-    By actionTitleLocator = By.className("price-spoffers__action-title");
-    By specialOfferTitleLocator = By.className("price-spoffers__special-offer-title");
-    By oldPriceLocator = By.className("price-spoffers__old-price");
-    By actualPriceLocator = By.className("price-spoffers__actual-price");
-    By specialOfferPlusLocator = By.className("price-spoffers__special-offer-plus");
-    */
+    By titleLocator = By.cssSelector("h2.price-countable-service__title");
+    By countLocator = By.cssSelector("input");
+    By priceLocator = By.cssSelector("span.price-countable-service__cost-amount");
+    By priceFrom5Locator = By.cssSelector("div.HH-Price-CountableService-DiscountRate[data-amount=\"5\"] span.price-countable-service__rate-cost");
+    By priceFrom10Locator = By.cssSelector("div.HH-Price-CountableService-DiscountRate[data-amount=\"10\"] span.price-countable-service__rate-cost");
+    By priceFrom50Locator = By.cssSelector("div.HH-Price-CountableService-DiscountRate[data-amount=\"50\"] span.price-countable-service__rate-cost");
 
     public VacancyPublication(WebElement offer) {
-        /*
-        giftTitle = offer.findElement(giftTitleLocator).getText();
-        giftDesc = offer.findElement(giftDescLocator).getText();
-        actionTitle = offer.findElement(actionTitleLocator).getText();
-        specialOfferTitle = offer.findElement(specialOfferTitleLocator).getText();
+        title = offer.findElement(titleLocator).getText();
+        count = Integer.valueOf(offer.findElement(countLocator).getAttribute("value").replaceAll("\\D+",""));
 
-        if(offer.findElements(oldPriceLocator).size() > 0)
-            oldPrice = offer.findElement(oldPriceLocator).getText();
+        // Checking price for one
+        offer.findElement(countLocator).clear();
+        offer.findElement(countLocator).sendKeys("1");
+        price = Integer.valueOf(offer.findElement(priceLocator).getText().replaceAll("\\D+",""));
+        offer.findElement(countLocator).clear();
+        offer.findElement(countLocator).sendKeys(Integer.toString(count));
 
-        actualPrice = offer.findElement(actualPriceLocator).getText();
-        specialOfferPlus = offer.findElement(specialOfferPlusLocator).getText();
-
-        price = Integer.valueOf(actualPrice.replaceAll("\\D+",""));*/
+        priceFrom5 = Integer.valueOf(offer.findElement(priceFrom5Locator).getText().replaceAll("\\D+",""));
+        priceFrom10 = Integer.valueOf(offer.findElement(priceFrom10Locator).getText().replaceAll("\\D+",""));
+        priceFrom50 = Integer.valueOf(offer.findElement(priceFrom50Locator).getText().replaceAll("\\D+",""));
     }
 
-    /*
     public void print() {
         System.out.println("OFFER:");
         System.out.println("__________________________________________________");
-        System.out.println("giftTitle: " + giftTitle);
-        System.out.println("giftDesc: " + giftDesc);
-        System.out.println("actionTitle: " + actionTitle);
-        System.out.println("specialOfferTitle: " + specialOfferTitle);
-        System.out.println("oldPrice: " + oldPrice);
-        System.out.println("actualPrice: " + actualPrice);
-        System.out.println("specialOfferPlus: " + specialOfferPlus);
-        System.out.println();
-        System.out.println("PRICE: " + price);
+        System.out.println("title: " + title);
+        System.out.println("count: " + count);
+        System.out.println("price: " + price);
+        System.out.println("priceFrom5: " + priceFrom5);
+        System.out.println("priceFrom10: " + priceFrom10);
+        System.out.println("priceFrom50: " + priceFrom50);
         System.out.println("__________________________________________________");
         System.out.println();
     }
-    */
 }

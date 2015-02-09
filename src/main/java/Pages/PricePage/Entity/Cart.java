@@ -3,6 +3,7 @@ package Pages.PricePage.Entity;
 import Pages.PricePage.Forms.FormCart;
 import Pages.PricePage.Tabs.TabRecommended.Entity.SpecialOffer;
 import Pages.PricePage.Tabs.TabResumeBaseAccess.Entity.ResumeAccess;
+import Pages.PricePage.Tabs.TabVacancyPublication.Entity.VacancyPublication;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
@@ -10,9 +11,11 @@ import java.util.ArrayList;
 public class Cart {
     public ArrayList<SpecialOfferCart> specialOffers = new ArrayList<SpecialOfferCart>();
     public ArrayList<ResumeAccessCart> resumeAccesses = new ArrayList<ResumeAccessCart>();
+    public ArrayList<CountableServiceCart> vacancyPublications = new ArrayList<CountableServiceCart>();
 
     public ArrayList<SpecialOfferCart> specialOffersCart = new ArrayList<SpecialOfferCart>();
     public ArrayList<ResumeAccessCart> resumeAccessCart = new ArrayList<ResumeAccessCart>();
+    public ArrayList<CountableServiceCart> countableServicesCart = new ArrayList<CountableServiceCart>();
 
     public void add(SpecialOffer specialOffer) {
         specialOffers.add(new SpecialOfferCart(specialOffer));
@@ -22,6 +25,10 @@ public class Cart {
         resumeAccesses.add(new ResumeAccessCart(resumeAccess));
     }
 
+    public void add(VacancyPublication vacancyPublication) {
+        vacancyPublications.add(new CountableServiceCart(vacancyPublication));
+    }
+
     public void addCart(FormCart formCart) {
         if(formCart.specialOffersList != null)
             for(WebElement entry : formCart.specialOffersList)
@@ -29,6 +36,9 @@ public class Cart {
         if(formCart.resumeAccessList != null)
             for(WebElement entry : formCart.resumeAccessList)
                 resumeAccessCart.add(new ResumeAccessCart(entry));
+        if(formCart.countableServiceList != null)
+            for(WebElement entry : formCart.countableServiceList)
+                countableServicesCart.add(new CountableServiceCart(entry));
     }
 
     public boolean cartEquals() {
@@ -56,7 +66,6 @@ public class Cart {
                     specialOffers.get(i).print();
                     System.out.println("ACTUAL:");
                     specialOffersCart.get(i).print();
-
                     return false;
                 }
         }
@@ -75,7 +84,32 @@ public class Cart {
                     resumeAccesses.get(i).print();
                     System.out.println("ACTUAL:");
                     resumeAccessCart.get(i).print();
+                    return false;
+                }
+        }
 
+        for(int i = 0; i < vacancyPublications.size(); i++) {
+            if (!vacancyPublications.get(i).count.equals(countableServicesCart.get(i).count)) {
+                System.out.println("EXPECTED:");
+                vacancyPublications.get(i).print();
+                System.out.println("ACTUAL:");
+                countableServicesCart.get(i).print();
+                return false;
+            }
+
+            if (!vacancyPublications.get(i).actualCost.equals(countableServicesCart.get(i).actualCost)) {
+                System.out.println("EXPECTED:");
+                vacancyPublications.get(i).print();
+                System.out.println("ACTUAL:");
+                countableServicesCart.get(i).print();
+                return false;
+            }
+            if((vacancyPublications.get(i).oldCost != null) && (countableServicesCart.get(i).oldCost != null))
+                if (!vacancyPublications.get(i).oldCost.equals(countableServicesCart.get(i).oldCost)) {
+                    System.out.println("EXPECTED:");
+                    vacancyPublications.get(i).print();
+                    System.out.println("ACTUAL:");
+                    countableServicesCart.get(i).print();
                     return false;
                 }
         }

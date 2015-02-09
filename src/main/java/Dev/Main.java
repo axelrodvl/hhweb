@@ -24,6 +24,11 @@ public class Main {
         pagePrice.vacancyPublicationTab().addToCart(3, 2);
         pagePrice.vacancyPublicationTab().addToCart(4, 3);
 
+        pagePrice.vacancyPublicationTab().getOffer(0).print();
+        pagePrice.vacancyPublicationTab().getOffer(1).print();
+        pagePrice.vacancyPublicationTab().getOffer(2).print();
+        pagePrice.vacancyPublicationTab().getOffer(3).print();
+
         /*
         System.out.println("hasContentsCountableService: " + pagePrice.cartForm().hasContentsCountableService());
         System.out.println("hasContentsResumeAccess: " + pagePrice.cartForm().hasContentsResumeAccess());
