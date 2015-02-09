@@ -25,8 +25,8 @@ public class Cart {
         resumeAccesses.add(new ResumeAccessCart(resumeAccess));
     }
 
-    public void add(VacancyPublication vacancyPublication) {
-        vacancyPublications.add(new CountableServiceCart(vacancyPublication));
+    public void add(VacancyPublication vacancyPublication, Integer count) {
+        vacancyPublications.add(new CountableServiceCart(vacancyPublication, count));
     }
 
     public void addCart(FormCart formCart) {
@@ -45,6 +45,8 @@ public class Cart {
         if(specialOffers.size() != specialOffersCart.size())
             return false;
         if(resumeAccesses.size() != resumeAccessCart.size())
+            return false;
+        if(vacancyPublications.size() != countableServicesCart.size())
             return false;
 
         // Objects can't be compared to be equal because of possible difference of object.title value.

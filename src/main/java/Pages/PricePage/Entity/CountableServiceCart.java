@@ -26,9 +26,9 @@ public class CountableServiceCart {
             oldCost = Integer.valueOf(countableService.findElement(oldCostLocator).getText().replaceAll("\\D+", ""));
     }
 
-    public CountableServiceCart(VacancyPublication vacancyPublication) {
+    public CountableServiceCart(VacancyPublication vacancyPublication, Integer count) {
         title = vacancyPublication.title;
-        count = vacancyPublication.count;
+        this.count = count;
         costForOne = vacancyPublication.price;
         oldCost = count * costForOne;
 

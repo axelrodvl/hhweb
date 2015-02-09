@@ -18,17 +18,20 @@ public class Main {
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 
         PagePrice pagePrice = new PagePrice(driver);
+        Cart cart = new Cart();
 
         pagePrice.vacancyPublicationTab().addToCart(1, 0);
-        pagePrice.vacancyPublicationTab().addToCart(2, 1);
-        pagePrice.vacancyPublicationTab().addToCart(3, 2);
-        pagePrice.vacancyPublicationTab().addToCart(4, 3);
+        pagePrice.vacancyPublicationTab().addToCart(6, 1);
+        pagePrice.vacancyPublicationTab().addToCart(11, 2);
+        pagePrice.vacancyPublicationTab().addToCart(51, 3);
 
-        pagePrice.vacancyPublicationTab().getOffer(0).print();
-        pagePrice.vacancyPublicationTab().getOffer(1).print();
-        pagePrice.vacancyPublicationTab().getOffer(2).print();
-        pagePrice.vacancyPublicationTab().getOffer(3).print();
+        cart.add(pagePrice.vacancyPublicationTab().getOffer(0), 1);
+        cart.add(pagePrice.vacancyPublicationTab().getOffer(1), 6);
+        cart.add(pagePrice.vacancyPublicationTab().getOffer(2), 11);
+        cart.add(pagePrice.vacancyPublicationTab().getOffer(3), 51);
+        cart.addCart(pagePrice.cartForm());
 
+        System.out.println("EQUALS = " + cart.cartEquals());
         /*
         System.out.println("hasContentsCountableService: " + pagePrice.cartForm().hasContentsCountableService());
         System.out.println("hasContentsResumeAccess: " + pagePrice.cartForm().hasContentsResumeAccess());
