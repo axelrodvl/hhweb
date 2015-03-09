@@ -33,7 +33,7 @@ public class TabResumeBaseAccess {
     By offersLocatorMedium = By.cssSelector("div.price-resume-access__period-group_bottom.HH-Price-ResumeAccess-Period-Group_medium > div > label");
     By offersLocatorLong = By.cssSelector("div.price-resume-access__period-group_bottom.HH-Price-ResumeAccess-Period-Group_long > div > label");
 
-    @FindBy(css = "div.HH-Price-ResumeAccess-ChangeRegion.price-resume-access__change-item")
+    @FindBy(css = "div.HH-Price-ResumeAccess-ChangeRegion.link-switch")
     private WebElement regionButton;
 
     @FindBy(css = "div.HH-Price-ResumeAccess-ChangeProfArea.price-resume-access__change-item")
