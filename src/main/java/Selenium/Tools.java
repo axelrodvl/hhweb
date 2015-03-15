@@ -12,7 +12,7 @@ public class Tools {
         int currentSleepTimeInMs = 0;
 
         while((driver.findElements(by).size() == 0) && (currentSleepTimeInMs < timeoutInMs)) {
-            TimeUnit.MILLISECONDS.sleep(timeoutInMs);
+            TimeUnit.MILLISECONDS.sleep(onceSleepTimeInMs);
             currentSleepTimeInMs += onceSleepTimeInMs;
         }
 
